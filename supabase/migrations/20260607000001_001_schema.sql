@@ -1,9 +1,6 @@
--- Extensión para UUIDs
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-
 -- Tabla: bares
 CREATE TABLE bares (
-  id          uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   nombre      text NOT NULL,
   activo      boolean NOT NULL DEFAULT true,
   created_at  timestamptz NOT NULL DEFAULT now()
@@ -11,7 +8,7 @@ CREATE TABLE bares (
 
 -- Tabla: series
 CREATE TABLE series (
-  id          uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   nombre      text NOT NULL,
   dia_juego   text,
   bar_id      uuid REFERENCES bares(id) ON DELETE RESTRICT,
@@ -21,7 +18,7 @@ CREATE TABLE series (
 
 -- Tabla: parejas
 CREATE TABLE parejas (
-  id                  uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id                  uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   jugador1_nombre     text NOT NULL,
   jugador1_apellido   text NOT NULL,
   jugador2_nombre     text NOT NULL,
@@ -32,7 +29,7 @@ CREATE TABLE parejas (
 
 -- Tabla: inscripciones (relación pareja-serie)
 CREATE TABLE inscripciones (
-  id          uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   pareja_id   uuid NOT NULL REFERENCES parejas(id) ON DELETE RESTRICT,
   serie_id    uuid NOT NULL REFERENCES series(id) ON DELETE RESTRICT,
   activa      boolean NOT NULL DEFAULT true,
@@ -42,7 +39,7 @@ CREATE TABLE inscripciones (
 
 -- Tabla: jornadas
 CREATE TABLE jornadas (
-  id          uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   serie_id    uuid NOT NULL REFERENCES series(id) ON DELETE RESTRICT,
   numero      integer NOT NULL,
   fecha       date NOT NULL,
@@ -52,7 +49,7 @@ CREATE TABLE jornadas (
 
 -- Tabla: partidos
 CREATE TABLE partidos (
-  id               uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id               uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   jornada_id       uuid NOT NULL REFERENCES jornadas(id) ON DELETE RESTRICT,
   inscripcion1_id  uuid NOT NULL REFERENCES inscripciones(id) ON DELETE RESTRICT,
   inscripcion2_id  uuid NOT NULL REFERENCES inscripciones(id) ON DELETE RESTRICT,
