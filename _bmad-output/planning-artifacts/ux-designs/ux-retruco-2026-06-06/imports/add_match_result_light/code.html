@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Retruco - Agregar Partido</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#291800",
+                        "secondary-fixed-dim": "#a5d0b9",
+                        "primary": "#006493",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#624000",
+                        "inverse-primary": "#8dcdff",
+                        "tertiary": "#815500",
+                        "secondary-container": "#beead1",
+                        "on-background": "#1c1b1b",
+                        "inverse-surface": "#313030",
+                        "tertiary-container": "#cd8a00",
+                        "on-primary-fixed-variant": "#004b70",
+                        "tertiary-fixed": "#ffddb2",
+                        "secondary": "#3f6653",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-fixed": "#002114",
+                        "primary-container": "#4d9fd6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fcf9f8",
+                        "surface-container-high": "#ebe7e7",
+                        "background": "#fcf9f8",
+                        "tertiary-fixed-dim": "#ffb94c",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#274e3d",
+                        "primary-fixed-dim": "#8dcdff",
+                        "on-secondary-container": "#436b58",
+                        "outline-variant": "#bfc7d0",
+                        "inverse-on-surface": "#f3f0ef",
+                        "secondary-fixed": "#c1ecd4",
+                        "on-primary-container": "#00334e",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#442b00",
+                        "on-surface": "#1c1b1b",
+                        "on-surface-variant": "#40484f",
+                        "primary-fixed": "#cae6ff",
+                        "outline": "#707880",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e5e2e1",
+                        "surface-container": "#f0edec",
+                        "on-primary-fixed": "#001e30",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fcf9f8",
+                        "surface-tint": "#006493",
+                        "surface-container-low": "#f6f3f2",
+                        "gold": "#E8A020"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "container-margin": "16px",
+                        "xs": "8px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Barlow Condensed"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Barlow Condensed"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Barlow Condensed"],
+                        "display-lg": ["Barlow Condensed"],
+                        "ranking-number": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "ranking-number": ["20px", {"lineHeight": "20px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .stepper-btn:active {
+            transform: scale(0.9);
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-container-margin h-14 w-full bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-icon="playing_cards">playing_cards</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Retruco</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<main class="max-w-md mx-auto px-container-margin py-lg space-y-lg">
+<!-- Section Header -->
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="arrow_back">arrow_back</button>
+<h2 class="font-headline-md text-headline-md">Agregar Partido</h2>
+</div>
+<form class="space-y-xl" onsubmit="event.preventDefault();">
+<!-- Jornada Selector -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">JORNADA</label>
+<div class="relative">
+<select class="w-full h-14 px-md bg-surface border border-outline-variant rounded-xl appearance-none focus:ring-2 focus:ring-primary focus:outline-none transition-all">
+<option selected="">Jornada 3 — Serie Lunes</option>
+<option>Jornada 2 — Serie Miércoles</option>
+<option>Jornada 1 — Serie Viernes</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-4 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Teams Selection -->
+<div class="grid grid-cols-1 gap-lg">
+<!-- Pair 1 -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">PAREJA 1</label>
+<div class="relative">
+<select class="w-full h-14 px-md bg-surface border border-outline-variant rounded-xl appearance-none focus:ring-2 focus:ring-primary focus:outline-none">
+<option selected="">García / Rodríguez</option>
+<option>López / Pérez</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-4 pointer-events-none text-on-surface-variant" data-icon="group">group</span>
+</div>
+</div>
+<!-- Pair 2 -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">PAREJA 2</label>
+<div class="relative">
+<select class="w-full h-14 px-md bg-surface border border-outline-variant rounded-xl appearance-none focus:ring-2 focus:ring-primary focus:outline-none">
+<option selected="">Silva / Núñez</option>
+<option>Fernández / Sosa</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-4 pointer-events-none text-on-surface-variant" data-icon="group">group</span>
+</div>
+</div>
+</div>
+<!-- Score Input Area (Large Touch Targets) -->
+<div class="bg-surface-container-low p-md rounded-xl space-y-lg border border-outline-variant">
+<div class="grid grid-cols-2 gap-md">
+<!-- Score 1 -->
+<div class="flex flex-col items-center space-y-sm">
+<span class="font-label-sm text-label-sm text-primary uppercase">Puntos P1</span>
+<div class="flex items-center gap-xs">
+<button class="stepper-btn w-12 h-14 flex items-center justify-center bg-surface border border-outline-variant rounded-lg text-primary" onclick="changeValue('p1', -1)" type="button">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<input class="w-16 h-14 text-center font-ranking-number text-ranking-number bg-surface border-none rounded-lg focus:ring-0" id="score-p1" readonly="" type="number" value="40"/>
+<button class="stepper-btn w-12 h-14 flex items-center justify-center bg-surface border border-outline-variant rounded-lg text-primary" onclick="changeValue('p1', 1)" type="button">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<!-- Score 2 -->
+<div class="flex flex-col items-center space-y-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Puntos P2</span>
+<div class="flex items-center gap-xs">
+<button class="stepper-btn w-12 h-14 flex items-center justify-center bg-surface border border-outline-variant rounded-lg text-on-surface-variant" onclick="changeValue('p2', -1)" type="button">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<input class="w-16 h-14 text-center font-ranking-number text-ranking-number bg-surface border-none rounded-lg focus:ring-0" id="score-p2" readonly="" type="number" value="28"/>
+<button class="stepper-btn w-12 h-14 flex items-center justify-center bg-surface border border-outline-variant rounded-lg text-on-surface-variant" onclick="changeValue('p2', 1)" type="button">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Preview Card -->
+<div class="bg-secondary-container/30 border border-secondary-container p-md rounded-xl flex items-center gap-md">
+<div class="w-10 h-10 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined" data-icon="emoji_events" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-secondary-container uppercase tracking-wider">PREVISUALIZACIÓN</p>
+<p class="font-body-md text-body-md font-bold text-on-secondary-container">Ganador: García / Rodríguez (40 tantos)</p>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full h-14 bg-gold text-on-tertiary-fixed font-bold rounded-xl flex items-center justify-center gap-sm active:scale-95 transition-all shadow-lg" type="submit">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+<span>Guardar Partido</span>
+</button>
+</form>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 pb-safe bg-surface shadow-[0px_-4px_12px_rgba(0,0,0,0.1)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-all hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-all hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-label-sm text-label-sm">Tabla Global</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold scale-90 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<span class="font-label-sm text-label-sm">Admin</span>
+</a>
+</nav>
+<script>
+        function changeValue(target, delta) {
+            const input = document.getElementById('score-' + target);
+            let val = parseInt(input.value);
+            val = Math.max(0, val + delta);
+            input.value = val;
+            
+            // Micro-interaction: Update winner preview logically (simplified demo)
+            updatePreview();
+        }
+
+        function updatePreview() {
+            const p1 = parseInt(document.getElementById('score-p1').value);
+            const p2 = parseInt(document.getElementById('score-p2').value);
+            const previewText = document.querySelector('.bg-secondary-container\/30 p.font-bold');
+            
+            if (p1 > p2) {
+                previewText.textContent = `Ganador: García / Rodríguez (${p1} tantos)`;
+            } else if (p2 > p1) {
+                previewText.textContent = `Ganador: Silva / Núñez (${p2} tantos)`;
+            } else {
+                previewText.textContent = `Empate: ${p1} - ${p2}`;
+            }
+        }
+    </script>
+</body></html>

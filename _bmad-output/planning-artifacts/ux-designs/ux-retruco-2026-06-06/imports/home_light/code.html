@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#291800",
+                    "secondary-fixed-dim": "#a5d0b9",
+                    "primary": "#006493",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#624000",
+                    "inverse-primary": "#8dcdff",
+                    "tertiary": "#815500",
+                    "secondary-container": "#beead1",
+                    "on-background": "#1c1b1b",
+                    "inverse-surface": "#313030",
+                    "tertiary-container": "#cd8a00",
+                    "on-primary-fixed-variant": "#004b70",
+                    "tertiary-fixed": "#ffddb2",
+                    "secondary": "#3f6653",
+                    "surface-dim": "#dcd9d9",
+                    "on-secondary-fixed": "#002114",
+                    "primary-container": "#4d9fd6",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#fcf9f8",
+                    "surface-container-high": "#ebe7e7",
+                    "background": "#fcf9f8",
+                    "tertiary-fixed-dim": "#ffb94c",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#274e3d",
+                    "primary-fixed-dim": "#8dcdff",
+                    "on-secondary-container": "#436b58",
+                    "outline-variant": "#bfc7d0",
+                    "inverse-on-surface": "#f3f0ef",
+                    "secondary-fixed": "#c1ecd4",
+                    "on-primary-container": "#00334e",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#442b00",
+                    "on-surface": "#1c1b1b",
+                    "on-surface-variant": "#40484f",
+                    "primary-fixed": "#cae6ff",
+                    "outline": "#707880",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e5e2e1",
+                    "surface-container": "#f0edec",
+                    "on-primary-fixed": "#001e30",
+                    "on-secondary": "#ffffff",
+                    "surface": "#fcf9f8",
+                    "surface-tint": "#006493",
+                    "surface-container-low": "#f6f3f2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "xl": "32px",
+                    "sm": "12px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "container-margin": "16px",
+                    "xs": "8px",
+                    "gutter": "12px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Barlow Condensed"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Barlow Condensed"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Barlow Condensed"],
+                    "display-lg": ["Barlow Condensed"],
+                    "ranking-number": ["Barlow Condensed"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "ranking-number": ["20px", {"lineHeight": "20px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-20">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-container-margin h-14 w-full bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-icon="playing_cards">playing_cards</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Retruco</span>
+</div>
+<button class="hover:bg-surface-container-high transition-colors p-2 rounded-full active:opacity-80 active:scale-95">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<main class="max-w-[1280px] mx-auto px-container-margin pt-lg">
+<!-- Hero / Tagline -->
+<section class="mb-xl">
+<h2 class="font-display-lg text-display-lg text-on-surface leading-tight">Campeonato de Truco</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-xs">La arena profesional para los amantes del mazo español.</p>
+</section>
+<!-- Series Activas Section -->
+<section>
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Series activas</h3>
+<span class="bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-sm py-1 rounded-full uppercase">En Curso</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Card 1 -->
+<div class="group relative overflow-hidden bg-surface border border-outline-variant rounded-xl hover:shadow-lg transition-all duration-300">
+<div class="h-32 w-full relative">
+<img class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all" data-alt="A vintage, rustic bar interior with dark wood textures and warm ambient lighting. People are gathered around a table playing cards with Spanish playing cards. The atmosphere is traditional and cozy, perfectly capturing a local Uruguayan or Argentine bar setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdZ4frdTmzMoAXBl-FrlF6yC5iRa9pFIyU8EGNzKBJn73cgIVp17mC3kdyQoeQV8Ngvo9yWx6NreYy15-Jj2uOQVIIVYAifTXC7BFBIW7tqNGBNjg_xJZBgqtPOVF8HI8MSMFhEx6h7euj1poA8gOJuI8Cnkzv1NiOn-EcDkuVCt99cboHJpMIa-JEaILYa0rpBD39qGImra58KMfuhylDK2mS50Ah5qDndexlU0lFDc6RQq9kx7GdNyeYKVc7sgrn4DYnYOx7Z052"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+</div>
+<div class="p-md relative -mt-8">
+<div class="flex items-center gap-xs text-primary mb-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-sm text-label-sm">Lunes</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-xs">Serie Lunes</h4>
+<div class="space-y-1">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="font-body-md text-body-md">Bar El Palmar</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="groups">groups</span>
+<span class="font-body-md text-body-md">12 parejas</span>
+</div>
+</div>
+<button class="mt-md w-full py-2 bg-primary text-on-primary font-label-sm text-label-sm rounded-lg active:scale-95 transition-transform">VER POSICIONES</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative overflow-hidden bg-surface border border-outline-variant rounded-xl hover:shadow-lg transition-all duration-300">
+<div class="h-32 w-full relative">
+<img class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all" data-alt="A sophisticated cocktail bar with polished copper elements and emerald green leather seating. The lighting is dimmed and moody, casting soft highlights on elegant glassware. The scene conveys a premium competitive atmosphere where a professional card tournament would take place." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn-pl62F2oggKIZRTnlZr4zxfK11RAtTapBvkfhdJPjp8Lj2lHGQEBag8mWoWuBgUYp9M4jWqKUfAmhv433KOMsCDVihajwDOmJZvPe46dTZIKR-Wr_LRytk4Tf0DchrxRV1eBzoJPUAOp_gE_quGBy2IcRWB9HWkMLkYlXMqSy__gR9Qgo0KKnhH2JX7rPdZ3lFCbE1snMtYvV56CFCLKNuEom1SRK9yyDv2Dv0KFdOlGUti9t5P-vJ-fh-jSz0E9PnFyQrANVRvI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+</div>
+<div class="p-md relative -mt-8">
+<div class="flex items-center gap-xs text-primary mb-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-sm text-label-sm">Miércoles</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-xs">Serie Miércoles Marlon</h4>
+<div class="space-y-1">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="font-body-md text-body-md">Bar Marlon</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="groups">groups</span>
+<span class="font-body-md text-body-md">10 parejas</span>
+</div>
+</div>
+<button class="mt-md w-full py-2 bg-primary text-on-primary font-label-sm text-label-sm rounded-lg active:scale-95 transition-transform">VER POSICIONES</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative overflow-hidden bg-surface border border-outline-variant rounded-xl hover:shadow-lg transition-all duration-300">
+<div class="h-32 w-full relative">
+<img class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all" data-alt="High-contrast editorial photography of a central urban meeting point. The architecture is grand and classical, with high ceilings and wide open spaces. The lighting is strong, creating deep shadows and bright highlights, emphasizing a sense of authority and established tradition in a competitive sports setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoO_ym-PrDugxY2ikv3LSYV5IFUEVtFYN0EPP-z2jBwyjM2LflWQJfU8qm5o5LOV9K3RPQLpExeu1FdUTyK7nfnL6BC2xX9tegT13_aPi8OjyFcCsEAktrCZmi2EfwBXlQrr4WAoVkLyl9wQofpfOtlGNqIyc9nA2U0jWh_O032JXRX7pnRYFzZDFHIVhqcAB3KLOmMI8jI5CVESGRL3ieeLbNTdk7QjJuPMouVGk6OlcswwDzP5yVD2YAiAQeMMNKUZ8KfGPSXdS3"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+</div>
+<div class="p-md relative -mt-8">
+<div class="flex items-center gap-xs text-primary mb-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-sm text-label-sm">Jueves</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-xs">Serie Jueves Central</h4>
+<div class="space-y-1">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="font-body-md text-body-md">Bar Central</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="groups">groups</span>
+<span class="font-body-md text-body-md">8 parejas</span>
+</div>
+</div>
+<button class="mt-md w-full py-2 bg-primary text-on-primary font-label-sm text-label-sm rounded-lg active:scale-95 transition-transform">VER POSICIONES</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group relative overflow-hidden bg-surface border border-outline-variant rounded-xl hover:shadow-lg transition-all duration-300">
+<div class="h-32 w-full relative">
+<img class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all" data-alt="A lively community club hall filled with numerous card tables. The scene is buzzing with energy as dozens of people engage in intense matches. The lighting is bright and industrial, reflecting a high-stakes, large-scale professional card league event on a Friday night." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3gEaplGahDpW5qRL4GKdsNVETs3Vv08u_waqia_u0h-bqyxhHwFflPNfJ02StdorNk1vCnVkdzeHeDBBk3fITfMqoCi468EHUO04QDDFys1lS-j-fF8JxYEVQFLvbzMQpsz6hnMCaSnKGKsZ-Z1hksa4CAivvWfsdSc9CtlCyUov4z-mqzzZUFghGFCez3HKB0U_t7DggNkP_L-nQ3qIWjkLj0eWlLlSPNYRjOEaoD7QWlrVouHQ2571ebQfc229EHTllPE4g1GXG"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+</div>
+<div class="p-md relative -mt-8">
+<div class="flex items-center gap-xs text-primary mb-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-sm text-label-sm">Viernes</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-xs">Serie Viernes de Truco</h4>
+<div class="space-y-1">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="font-body-md text-body-md">Club Social</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="groups">groups</span>
+<span class="font-body-md text-body-md">14 parejas</span>
+</div>
+</div>
+<button class="mt-md w-full py-2 bg-primary text-on-primary font-label-sm text-label-sm rounded-lg active:scale-95 transition-transform">VER POSICIONES</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Rankings Teaser / Placeholder for Table Content -->
+<section class="mt-xl mb-xl">
+<div class="bg-surface-container-low border border-outline-variant p-lg rounded-xl flex flex-col md:flex-row items-center gap-lg">
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md mb-xs">¿Quién domina la tabla?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Consulta el ranking global y las posiciones actualizadas de todas las series del campeonato profesional.</p>
+</div>
+<button class="w-full md:w-auto px-xl py-md bg-secondary text-on-secondary font-headline-md text-headline-md rounded-xl active:scale-90 duration-150 transition-all">
+                    Ver Tabla Global
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 pb-safe bg-surface shadow-[0px_-4px_12px_rgba(0,0,0,0.1)] rounded-t-xl">
+<!-- Inicio (Active) -->
+<a class="flex flex-col items-center justify-center text-primary font-bold active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Inicio</span>
+</a>
+<!-- Tabla Global -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-label-sm text-label-sm">Tabla Global</span>
+</a>
+<!-- Admin -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="font-label-sm text-label-sm">Admin</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions and simple logic
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('click', (e) => {
+                // Future expansion for routing or modal logic
+                if(el.innerText.includes('POSICIONES')) {
+                    console.log('Navigating to positions...');
+                }
+            });
+        });
+
+        // Add a simple entrance animation for cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.group.relative.overflow-hidden').forEach(card => {
+            card.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-500');
+            observer.observe(card);
+        });
+    </script>
+</body></html>

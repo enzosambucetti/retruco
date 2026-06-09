@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Retruco - Jornadas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#291800",
+                        "secondary-fixed-dim": "#a5d0b9",
+                        "primary": "#006493",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#624000",
+                        "inverse-primary": "#8dcdff",
+                        "tertiary": "#815500",
+                        "secondary-container": "#beead1",
+                        "on-background": "#1c1b1b",
+                        "inverse-surface": "#313030",
+                        "tertiary-container": "#cd8a00",
+                        "on-primary-fixed-variant": "#004b70",
+                        "tertiary-fixed": "#ffddb2",
+                        "secondary": "#3f6653",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-fixed": "#002114",
+                        "primary-container": "#4d9fd6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fcf9f8",
+                        "surface-container-high": "#ebe7e7",
+                        "background": "#fcf9f8",
+                        "tertiary-fixed-dim": "#ffb94c",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#274e3d",
+                        "primary-fixed-dim": "#8dcdff",
+                        "on-secondary-container": "#436b58",
+                        "outline-variant": "#bfc7d0",
+                        "inverse-on-surface": "#f3f0ef",
+                        "secondary-fixed": "#c1ecd4",
+                        "on-primary-container": "#00334e",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#442b00",
+                        "on-surface": "#1c1b1b",
+                        "on-surface-variant": "#40484f",
+                        "primary-fixed": "#cae6ff",
+                        "outline": "#707880",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e5e2e1",
+                        "surface-container": "#f0edec",
+                        "on-primary-fixed": "#001e30",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fcf9f8",
+                        "surface-tint": "#006493",
+                        "surface-container-low": "#f6f3f2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "container-margin": "16px",
+                        "xs": "8px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Barlow Condensed"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Barlow Condensed"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Barlow Condensed"],
+                        "display-lg": ["Barlow Condensed"],
+                        "ranking-number": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "ranking-number": ["20px", {"lineHeight": "20px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcf9f8;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .jornada-card-hover:active {
+            transform: scale(0.98);
+            background-color: #f0edec;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-20">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-container-margin h-14 w-full bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-icon="playing_cards">playing_cards</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Retruco</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- Page Header & Identity -->
+<section class="px-container-margin pt-lg pb-md bg-surface">
+<div class="flex flex-col gap-1">
+<h1 class="font-headline-lg text-headline-lg text-on-surface uppercase tracking-tight">Serie Lunes</h1>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+<span class="font-body-md text-body-md">Bar El Palmar, Lunes</span>
+</div>
+</div>
+</section>
+<!-- Tab Selector -->
+<nav class="px-container-margin border-b border-outline-variant sticky top-14 bg-surface z-40">
+<div class="flex w-full">
+<button class="flex-1 py-md text-center font-label-sm text-label-sm text-on-surface-variant border-b-2 border-transparent transition-all">
+                Posiciones
+            </button>
+<button class="flex-1 py-md text-center font-label-sm text-label-sm text-primary border-b-2 border-primary transition-all font-bold">
+                Jornadas
+            </button>
+</div>
+</nav>
+<!-- Content: Jornadas List -->
+<main class="mt-md px-container-margin">
+<div class="flex flex-col gap-md">
+<!-- Jornada 5 (Featured/Active) -->
+<div class="jornada-card-hover group relative overflow-hidden bg-surface-container-low rounded-xl border border-outline-variant p-lg transition-all duration-200">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<span class="bg-primary text-on-primary font-label-sm text-label-sm px-sm py-0.5 rounded-full uppercase">En Curso</span>
+<span class="font-ranking-number text-ranking-number text-primary">Jornada 5</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">12 de mayo de 2025</h2>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="mt-lg flex items-center justify-between border-t border-outline-variant pt-md">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="sports_score">sports_score</span>
+<span class="font-body-md text-body-md text-on-surface-variant">6 partidos</span>
+</div>
+<button class="bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-md py-sm rounded-lg hover:bg-secondary-fixed transition-colors">
+                        Ver Partidos
+                    </button>
+</div>
+</div>
+<!-- Jornada 4 -->
+<div class="jornada-card-hover flex items-center justify-between bg-surface border-b border-outline-variant py-lg transition-all">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase">Jornada 4</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">28 de abril de 2025</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">6 partidos finalizados</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="history">history</span>
+</div>
+<!-- Jornada 3 -->
+<div class="jornada-card-hover flex items-center justify-between bg-surface border-b border-outline-variant py-lg transition-all">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase">Jornada 3</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">14 de abril de 2025</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">6 partidos finalizados</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="history">history</span>
+</div>
+<!-- Jornada 2 -->
+<div class="jornada-card-hover flex items-center justify-between bg-surface border-b border-outline-variant py-lg transition-all">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase">Jornada 2</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">31 de marzo de 2025</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">6 partidos finalizados</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="history">history</span>
+</div>
+<!-- Jornada 1 -->
+<div class="jornada-card-hover flex items-center justify-between bg-surface border-b border-outline-variant py-lg transition-all">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase">Jornada 1</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">17 de marzo de 2025</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">6 partidos finalizados</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="history">history</span>
+</div>
+</div>
+<!-- Atmospheric Image Context -->
+<div class="mt-xl mb-lg overflow-hidden rounded-xl border border-outline-variant h-48 relative">
+<img class="absolute inset-0 w-full h-full object-cover grayscale opacity-20" data-alt="A high-contrast, professional sports editorial style photograph of a traditional South American card game setting. The image depicts a weathered wooden table in a dimly lit, atmospheric bar called El Palmar, with blurred people in the background engaging in intense competition. The lighting is low-key and dramatic, emphasizing the textures of the cards and the table, captured with a shallow depth of field for a cinematic feel. The overall mood is serious, professional, and full of prestige." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6GFJyMcLQ1lSje4q1Uhn5TckSuXUqWOLYUtOhYGL4OYxn7idtAOUGvE7N-YCe-YTJWKRT-lEwn0oyjAYkh8NkM776Bd0hmde_uvsatRN1AJcqiYllpLdJRvK-jWjmOokbmCNI5-f6p2E-bZb88NEdU25KDVp37luJVcGnUcamFxjEvHNNz1k44U0_RCs4JZk38B7fx3eDzXYRuMkC6pLwYt46TWykIDoycLibbI4k1ds-Z7B3IG2TfLZrZfLpVFdGJcEFoJZ9oKLh"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent flex items-end p-md">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase italic opacity-70">Ambiente oficial - Campeonato Retruco 2025</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 pb-safe bg-surface shadow-[0px_-4px_12px_rgba(0,0,0,0.1)] rounded-t-xl border-t border-outline-variant/30">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Inicio</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary font-bold hover:bg-surface-container-low transition-colors px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined" data-icon="leaderboard" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+<span class="font-label-sm text-label-sm">Tabla Global</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="font-label-sm text-label-sm">Admin</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interactions for jornada cards
+        document.querySelectorAll('.jornada-card-hover').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.97)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+
+        // Tab switcher interaction
+        const tabs = document.querySelectorAll('nav[class*="px-container-margin"] button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('text-primary', 'border-primary', 'font-bold');
+                    t.classList.add('text-on-surface-variant', 'border-transparent');
+                });
+                tab.classList.add('text-primary', 'border-primary', 'font-bold');
+                tab.classList.remove('text-on-surface-variant', 'border-transparent');
+            });
+        });
+    </script>
+</body></html>

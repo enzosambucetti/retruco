@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Retruco - Panel Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcf9f8;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        @media (min-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+            .card-span-2 { grid-column: span 2; }
+            .card-span-3 { grid-column: span 3; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed": "#291800",
+                      "secondary-fixed-dim": "#a5d0b9",
+                      "primary": "#006493",
+                      "surface-container-highest": "#e5e2e1",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#624000",
+                      "inverse-primary": "#8dcdff",
+                      "tertiary": "#815500",
+                      "secondary-container": "#beead1",
+                      "on-background": "#1c1b1b",
+                      "inverse-surface": "#313030",
+                      "tertiary-container": "#cd8a00",
+                      "on-primary-fixed-variant": "#004b70",
+                      "tertiary-fixed": "#ffddb2",
+                      "secondary": "#3f6653",
+                      "surface-dim": "#dcd9d9",
+                      "on-secondary-fixed": "#002114",
+                      "primary-container": "#4d9fd6",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-bright": "#fcf9f8",
+                      "surface-container-high": "#ebe7e7",
+                      "background": "#fcf9f8",
+                      "tertiary-fixed-dim": "#ffb94c",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed-variant": "#274e3d",
+                      "primary-fixed-dim": "#8dcdff",
+                      "on-secondary-container": "#436b58",
+                      "outline-variant": "#bfc7d0",
+                      "inverse-on-surface": "#f3f0ef",
+                      "secondary-fixed": "#c1ecd4",
+                      "on-primary-container": "#00334e",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-container": "#442b00",
+                      "on-surface": "#1c1b1b",
+                      "on-surface-variant": "#40484f",
+                      "primary-fixed": "#cae6ff",
+                      "outline": "#707880",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "surface-variant": "#e5e2e1",
+                      "surface-container": "#f0edec",
+                      "on-primary-fixed": "#001e30",
+                      "on-secondary": "#ffffff",
+                      "surface": "#fcf9f8",
+                      "surface-tint": "#006493",
+                      "surface-container-low": "#f6f3f2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "xl": "32px",
+                      "sm": "12px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "container-margin": "16px",
+                      "xs": "8px",
+                      "gutter": "12px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Barlow Condensed"],
+                      "label-sm": ["Inter"],
+                      "headline-lg-mobile": ["Barlow Condensed"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Barlow Condensed"],
+                      "display-lg": ["Barlow Condensed"],
+                      "ranking-number": ["Barlow Condensed"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "ranking-number": ["20px", {"lineHeight": "20px", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-container-margin h-14 w-full bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="playing_cards">playing_cards</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Retruco</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex flex-col items-end mr-sm">
+<span class="font-label-sm text-label-sm text-on-surface">admin@retruco.uy</span>
+<span class="text-[10px] uppercase tracking-wider text-outline">Campeonato de Truco</span>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<main class="flex-1 max-w-7xl w-full mx-auto px-container-margin py-lg pb-32">
+<!-- Dashboard Header -->
+<div class="mb-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface">Panel Admin</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Gestión centralizada del torneo y participantes.</p>
+</div>
+<!-- Quick Stats Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-xl">
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="layers">layers</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase">Series Activas</span>
+<div class="font-headline-md text-headline-md text-on-surface leading-none mt-1">4</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="groups">groups</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase">Total Parejas</span>
+<div class="font-headline-md text-headline-md text-on-surface leading-none mt-1">44</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" data-icon="event">event</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase">Última Jornada</span>
+<div class="font-headline-md text-headline-md text-on-surface leading-none mt-1">12 May</div>
+</div>
+</div>
+</div>
+<!-- Action Cards Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Partidos (Priority Action) -->
+<a class="group relative overflow-hidden bg-primary text-on-primary p-lg rounded-xl flex flex-col justify-between h-48 hover:opacity-90 transition-all shadow-md" href="#">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-[40px]" data-icon="sports_score" style="font-variation-settings: 'FILL' 1;">sports_score</span>
+<span class="material-symbols-outlined opacity-50 group-hover:opacity-100 transition-opacity" data-icon="arrow_outward">arrow_outward</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Partidos</h3>
+<p class="font-label-sm text-label-sm text-primary-fixed opacity-90">Ingresar y gestionar resultados de partidos en vivo.</p>
+</div>
+</a>
+<!-- Jornadas -->
+<a class="group bg-surface-container p-lg rounded-xl border border-outline-variant flex flex-col justify-between h-48 hover:bg-surface-container-high transition-colors" href="#">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-on-surface-variant text-[40px]" data-icon="calendar_month">calendar_month</span>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Jornadas</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Configurar fechas y sedes de encuentros.</p>
+</div>
+</a>
+<!-- Series -->
+<a class="group bg-surface-container p-lg rounded-xl border border-outline-variant flex flex-col justify-between h-48 hover:bg-surface-container-high transition-colors" href="#">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-on-surface-variant text-[40px]" data-icon="format_list_numbered">format_list_numbered</span>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Series</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Administrar categorías y grupos del torneo.</p>
+</div>
+</a>
+<!-- Parejas -->
+<a class="group bg-surface-container p-lg rounded-xl border border-outline-variant flex flex-col justify-between h-48 hover:bg-surface-container-high transition-colors" href="#">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-on-surface-variant text-[40px]" data-icon="person_search">person_search</span>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Parejas</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Inscripción y edición de jugadores registrados.</p>
+</div>
+</a>
+<!-- Bares -->
+<a class="group bg-surface-container p-lg rounded-xl border border-outline-variant flex flex-col justify-between h-48 hover:bg-surface-container-high transition-colors" href="#">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-on-surface-variant text-[40px]" data-icon="restaurant">restaurant</span>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Bares</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Gestión de establecimientos sede del torneo.</p>
+</div>
+</a>
+<!-- Logout/Config (Secondary) -->
+<a class="group bg-surface-bright p-lg rounded-xl border border-error/20 flex flex-col justify-between h-48 hover:bg-error-container transition-colors" href="#">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-error text-[40px]" data-icon="logout">logout</span>
+<span class="material-symbols-outlined text-error opacity-50" data-icon="close">close</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-error">Cerrar Sesión</h3>
+<p class="font-label-sm text-label-sm text-on-error-container opacity-80">Finalizar sesión de administración de forma segura.</p>
+</div>
+</a>
+</div>
+<!-- System Image Section -->
+<section class="mt-xl rounded-xl overflow-hidden relative h-64 border border-outline-variant">
+<img alt="Arena" class="w-full h-full object-cover" data-alt="A high-end professional sports broadcasting room interior with multiple monitors displaying data and analytics. The atmosphere is sophisticated and authoritative, with professional lighting creating a sharp, modern corporate aesthetic. The room features elements of wood and polished steel, reflecting a prestigious competitive arena environment. The lighting is bright and clear, adhering to a light-mode design language with deep blue and gold accents throughout the technology displays." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpqv3Ez5WZN1aaptZVqJWFIsz0WZsLM15Mo4TkVScp2JzLr64zYaP5BOpHeuieeXyFX_SnOO8DuWtymxI4cUhrjfA1H-Gbh1ptEZzQ4VCFx6B3GKv1--DqM6QI8TjCx6SgkoDt8dVwGVSizB2GNkgdVW-UiInsYqbHcSUhXpB9Mo9kqfi-8qVN-a9eTbDwmcZPa51S4oczlTbOagRCCkq1jNnpHtvE_rySS-usgKQ4EzNtzMTtVd173_AcYo3ZHt90_aexcZYItyDc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 to-transparent flex items-end p-lg">
+<div class="text-on-primary">
+<h4 class="font-headline-md text-headline-md">Estado del Sistema</h4>
+<p class="font-body-md text-body-md opacity-90">Sincronización en tiempo real activa. Todas las sedes reportando.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- NavigationDrawer (Simulated for Web Side Layout if needed) -->
+<!-- Not rendered as fixed but included as logic in main layout for desktop -->
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 pb-safe bg-surface shadow-[0px_-4px_12px_rgba(0,0,0,0.1)] rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-label-sm text-label-sm">Tabla Global</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold scale-90" href="#">
+<span class="material-symbols-outlined fill-icon" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="font-label-sm text-label-sm">Admin</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Active state feedback for action cards
+        document.querySelectorAll('a').forEach(anchor => {
+            anchor.addEventListener('mousedown', () => {
+                anchor.classList.add('scale-95');
+            });
+            anchor.addEventListener('mouseup', () => {
+                anchor.classList.remove('scale-95');
+            });
+            anchor.addEventListener('mouseleave', () => {
+                anchor.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>
