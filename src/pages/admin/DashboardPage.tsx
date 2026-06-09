@@ -5,6 +5,7 @@ const SECTIONS = [
   { label: 'Bares', icon: 'store', path: '/admin/bares' },
   { label: 'Parejas', icon: 'group', path: '/admin/parejas' },
   { label: 'Jornadas', icon: 'calendar_month', path: '/admin/jornadas' },
+  { label: 'Nuevo Partido', icon: 'sports', path: '/admin/partidos/nuevo' },
 ]
 
 export function DashboardPage() {

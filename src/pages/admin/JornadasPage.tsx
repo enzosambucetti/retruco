@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useNavigate } from 'react-router-dom'
 import {
   getJornadasAdmin, getSeriesAdmin, createJornada, updateJornada, deactivateJornada,
 } from '../../lib/queries'
@@ -17,6 +18,7 @@ function formatFecha(s: string) {
 
 export function JornadasPage() {
   const qc = useQueryClient()
+  const navigate = useNavigate()
   const { data: jornadas = [], isLoading } = useQuery({ queryKey: ['jornadas-admin'], queryFn: getJornadasAdmin })
   const { data: series = [] } = useQuery({ queryKey: ['series-admin'], queryFn: getSeriesAdmin })
 
@@ -130,7 +132,7 @@ export function JornadasPage() {
       ) : (
         <div className="space-y-sm">
           {jornadas.map((j) => (
-            <div key={j.id} className={`flex items-center justify-between px-md py-sm bg-surface-container-lowest rounded-lg border border-outline-variant ${!j.activa ? 'opacity-50' : ''}`}>
+            <div key={j.id} className={`flex items-center justify-between px-md py-sm bg-surface-container-lowest rounded-lg border border-outline-variant ${!j.activa ? 'opacity-50' : ''}`} onClick={() => navigate(`/admin/jornadas/${j.id}`)} role="button" style={{ cursor: 'pointer' }}>
               <div className="flex flex-col gap-[2px]">
                 <div className="flex items-center gap-sm">
                   <span className="text-body-md text-on-surface">
@@ -143,7 +145,7 @@ export function JornadasPage() {
                 </span>
               </div>
               {j.activa && (
-                <div className="flex items-center gap-xs">
+                <div className="flex items-center gap-xs" onClick={e => e.stopPropagation()}>
                   <button onClick={() => openEdit(j)} className="w-9 h-9 flex items-center justify-center text-on-surface-variant active:scale-95 transition-transform" aria-label="Editar">
                     <span className="material-symbols-outlined text-[20px]">edit</span>
                   </button>

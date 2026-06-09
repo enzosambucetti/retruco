@@ -11,6 +11,7 @@ import { SeriesPage } from './pages/admin/SeriesPage'
 import { ParejasPage } from './pages/admin/ParejasPage'
 import { BaresPage } from './pages/admin/BaresPage'
 import { JornadasPage } from './pages/admin/JornadasPage'
+import { AdminJornadaPage } from './pages/admin/AdminJornadaPage'
 import { NuevoPartidoPage } from './pages/admin/NuevoPartidoPage'
 import { EditarPartidoPage } from './pages/admin/EditarPartidoPage'
 
@@ -61,6 +62,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <JornadasPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'admin/jornadas/:id',
+        element: (
+          <ProtectedRoute>
+            <AdminJornadaPage />
           </ProtectedRoute>
         ),
       },

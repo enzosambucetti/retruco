@@ -257,3 +257,122 @@ export interface JornadaAdminRow {
   series: { id: string; nombre: string } | null
   partidos: { id: string }[]
 }
+
+// ─── Epic 4: Partido queries ──────────────────────────────────────────────────
+
+export interface JornadaConSerie {
+  id: string
+  serie_id: string
+  numero: number
+  fecha: string
+  activa: boolean
+  series: { id: string; nombre: string } | null
+}
+
+export interface InscripcionConPareja {
+  id: string
+  pareja_id: string
+  serie_id: string
+  activa: boolean
+  parejas: {
+    id: string
+    jugador1_nombre: string
+    jugador1_apellido: string
+    jugador2_nombre: string
+    jugador2_apellido: string
+  } | null
+}
+
+export interface PartidoAdminRow {
+  id: string
+  jornada_id: string
+  inscripcion1_id: string
+  inscripcion2_id: string
+  tantos1: number
+  tantos2: number
+  activo: boolean
+  created_at: string
+  inscripcion1: { parejas: import('../types').ParejaResumen | null } | null
+  inscripcion2: { parejas: import('../types').ParejaResumen | null } | null
+}
+
+export async function getJornadasActivasConSerie(): Promise<JornadaConSerie[]> {
+  const { data, error } = await supabase
+    .from('jornadas')
+    .select('id, serie_id, numero, fecha, activa, series(id, nombre)')
+    .eq('activa', true)
+    .order('fecha', { ascending: false })
+  if (error) throw error
+  return data as unknown as JornadaConSerie[]
+}
+
+export async function getInscripcionesActivas(
+  serieId: string,
+): Promise<InscripcionConPareja[]> {
+  const { data, error } = await supabase
+    .from('inscripciones')
+    .select('id, pareja_id, serie_id, activa, parejas(id, jugador1_nombre, jugador1_apellido, jugador2_nombre, jugador2_apellido)')
+    .eq('serie_id', serieId)
+    .eq('activa', true)
+  if (error) throw error
+  return data as unknown as InscripcionConPareja[]
+}
+
+export async function getPartidosAdminByJornada(
+  jornadaId: string,
+): Promise<PartidoAdminRow[]> {
+  const { data, error } = await supabase
+    .from('partidos')
+    .select(
+      'id, jornada_id, inscripcion1_id, inscripcion2_id, tantos1, tantos2, activo, created_at, inscripcion1:inscripciones!inscripcion1_id(parejas(jugador1_nombre, jugador1_apellido, jugador2_nombre, jugador2_apellido)), inscripcion2:inscripciones!inscripcion2_id(parejas(jugador1_nombre, jugador1_apellido, jugador2_nombre, jugador2_apellido))',
+    )
+    .eq('jornada_id', jornadaId)
+    .order('created_at')
+  if (error) throw error
+  return data as unknown as PartidoAdminRow[]
+}
+
+export async function getPartidoById(id: string): Promise<PartidoAdminRow> {
+  const { data, error } = await supabase
+    .from('partidos')
+    .select(
+      'id, jornada_id, inscripcion1_id, inscripcion2_id, tantos1, tantos2, activo, created_at, inscripcion1:inscripciones!inscripcion1_id(serie_id, parejas(jugador1_nombre, jugador1_apellido, jugador2_nombre, jugador2_apellido)), inscripcion2:inscripciones!inscripcion2_id(serie_id, parejas(jugador1_nombre, jugador1_apellido, jugador2_nombre, jugador2_apellido))',
+    )
+    .eq('id', id)
+    .single()
+  if (error) throw error
+  return data as unknown as PartidoAdminRow
+}
+
+export async function createPartido(payload: {
+  jornada_id: string
+  inscripcion1_id: string
+  inscripcion2_id: string
+  tantos1: number
+  tantos2: number
+}) {
+  const { error } = await supabase.from('partidos').insert(payload)
+  if (error) throw error
+}
+
+export async function updatePartido(
+  id: string,
+  payload: {
+    jornada_id: string
+    inscripcion1_id: string
+    inscripcion2_id: string
+    tantos1: number
+    tantos2: number
+  },
+) {
+  const { error } = await supabase.from('partidos').update(payload).eq('id', id)
+  if (error) throw error
+}
+
+export async function deactivatePartido(id: string) {
+  const { error } = await supabase
+    .from('partidos')
+    .update({ activo: false })
+    .eq('id', id)
+  if (error) throw error
+}

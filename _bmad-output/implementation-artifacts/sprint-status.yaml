@@ -73,9 +73,9 @@ development_status:
   epic-3-retrospective: optional
 
   # Epic 4: Carga y gestión de partidos
-  epic-4: backlog
-  4-1-formulario-de-carga-de-nuevo-partido: backlog
-  4-2-guardar-partido-y-recalculo-automatico-de-standings: backlog
-  4-3-editar-resultado-de-partido-existente: backlog
-  4-4-desactivar-partido: backlog
+  epic-4: done
+  4-1-formulario-de-carga-de-nuevo-partido: review
+  4-2-guardar-partido-y-recalculo-automatico-de-standings: review
+  4-3-editar-resultado-de-partido-existente: review
+  4-4-desactivar-partido: review
   epic-4-retrospective: optional
