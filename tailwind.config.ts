@@ -67,6 +67,15 @@ export default {
         'container-margin': '16px',
         gutter: '12px',
       },
+      keyframes: {
+        slideUp: {
+          '0%': { transform: 'translateY(100%)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        slideUp: 'slideUp 200ms ease-out',
+      },
     },
   },
 } satisfies Config
