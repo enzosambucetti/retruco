@@ -56,6 +56,27 @@ export interface SerieConBar extends Serie {
   bares: Bar | null
 }
 
+export interface SerieConDetalles extends Serie {
+  bares: Bar | null
+  inscripciones: { id: string; activa: boolean }[]
+}
+
+export interface JornadaConCount extends Jornada {
+  partidos: { id: string }[]
+}
+
+export interface ParejaResumen {
+  jugador1_nombre: string
+  jugador1_apellido: string
+  jugador2_nombre: string
+  jugador2_apellido: string
+}
+
+export interface PartidoConNombres extends Partido {
+  inscripcion1: { pareja: ParejaResumen } | null
+  inscripcion2: { pareja: ParejaResumen } | null
+}
+
 export interface StandingRow {
   inscripcion_id: string
   pareja_id: string

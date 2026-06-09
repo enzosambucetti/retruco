@@ -54,12 +54,12 @@ development_status:
   epic-1-retrospective: optional
 
   # Epic 2: Experiencia pública — tablas y resultados
-  epic-2: backlog
-  2-1-pantalla-home-listado-de-series-activas: backlog
-  2-2-pantalla-de-serie-tabla-de-posiciones: backlog
-  2-3-pantalla-de-serie-tab-de-jornadas: backlog
-  2-4-pantalla-de-detalle-de-jornada: backlog
-  2-5-pantalla-de-tabla-global: backlog
+  epic-2: done
+  2-1-pantalla-home-listado-de-series-activas: review
+  2-2-pantalla-de-serie-tabla-de-posiciones: review
+  2-3-pantalla-de-serie-tab-de-jornadas: review
+  2-4-pantalla-de-detalle-de-jornada: review
+  2-5-pantalla-de-tabla-global: review
   epic-2-retrospective: optional
 
   # Epic 3: Panel de administración — gestión de entidades
