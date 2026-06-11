@@ -5,9 +5,11 @@ import { getJornadasAdmin, getPartidosAdminByJornada, deactivatePartido } from '
 import { ConfirmSheet } from '../../components/ConfirmSheet'
 import { InactiveChip } from '../../components/InactiveChip'
 
-function nombrePareja(p: { jugador1_apellido: string; jugador2_apellido: string } | null | undefined) {
+function nombrePareja(p: { jugador1_nombre: string; jugador1_apellido: string; jugador2_nombre: string; jugador2_apellido: string } | null | undefined) {
   if (!p) return '—'
-  return `${p.jugador1_apellido} / ${p.jugador2_apellido}`
+  const inicial1 = p.jugador1_nombre.charAt(0).toUpperCase()
+  const inicial2 = p.jugador2_nombre.charAt(0).toUpperCase()
+  return `${inicial1}.${p.jugador1_apellido} / ${inicial2}.${p.jugador2_apellido}`
 }
 
 function formatFecha(s: string) {

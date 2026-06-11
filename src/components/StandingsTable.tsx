@@ -1,9 +1,14 @@
 import type { StandingRow } from '../types'
 
-function soloApellidos(nombre: string): string {
+function inicialApellido(nombre: string): string {
   return nombre
     .split(' / ')
-    .map(p => { const w = p.trim().split(' '); return w[w.length - 1] })
+    .map(p => {
+      const w = p.trim().split(' ')
+      const inicial = w[0]?.charAt(0).toUpperCase() ?? ''
+      const apellido = w[w.length - 1] ?? ''
+      return `${inicial}.${apellido}`
+    })
     .join(' / ')
 }
 
@@ -45,7 +50,7 @@ export function StandingsTable({ rows, extraHeader, extraCell }: StandingsTableP
                   {row.posicion}
                 </td>
                 <td className="px-2 py-2 text-body-md text-on-surface leading-tight">
-                  {soloApellidos(row.nombre_pareja)}
+                  {inicialApellido(row.nombre_pareja)}
                 </td>
                 {extraCell?.(row)}
                 <td className="px-1 py-2 font-condensed text-ranking-number text-on-surface text-right w-7 tabular-nums">
