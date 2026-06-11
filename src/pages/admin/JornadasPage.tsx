@@ -78,7 +78,12 @@ export function JornadasPage() {
   return (
     <div className="max-w-md mx-auto px-md py-lg">
       <div className="flex items-center justify-between mb-lg">
-        <h1 className="font-condensed text-headline-lg-mobile text-on-surface">Jornadas</h1>
+        <div className="flex items-center gap-sm">
+          <button onClick={() => navigate('/admin')} className="text-primary active:scale-95 transition-transform" aria-label="Volver">
+            <span className="material-symbols-outlined">arrow_back</span>
+          </button>
+          <h1 className="font-condensed text-headline-lg-mobile text-on-surface">Jornadas</h1>
+        </div>
         {!formOpen && (
           <button onClick={openCreate} className="flex items-center gap-xs text-primary text-label-sm font-semibold active:scale-95 transition-transform">
             <span className="material-symbols-outlined text-[20px]">add</span>

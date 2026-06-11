@@ -25,7 +25,7 @@ _This document builds collaboratively through step-by-step discovery. Sections a
 **Functional Requirements:**
 5 feature groups / ~30 FRs:
 - **F1 (Auth):** Login de admins con email+password, sesión persistente, cierre manual. Sin auto-registro; cuentas predefinidas.
-- **F2 (Gestión de entidades):** CRUD completo para Series, Bares, Parejas, Jornadas. Desactivación lógica conserva historial.
+- **F2 (Gestión de entidades):** CRUD completo para Series, Parejas, Jornadas. Desactivación lógica conserva historial.
 - **F3 (Carga de partidos):** Ingreso manual de tantos, determinación automática de ganador, recálculo en cascada de tabla.
 - **F4 (Tablas públicas):** Standings por serie (10 columnas) + tabla global (pareja aparece una vez, mejor serie). 5 criterios de desempate en cascada.
 - **F5 (Consulta pública):** Jornadas y resultados visibles sin login. Navegación por serie.
@@ -237,9 +237,9 @@ ESLint + TypeScript ESLint incluidos. React Router v7 para routing SPA con rutas
 ### Naming Patterns
 
 **Database Naming Conventions (PostgreSQL / Supabase):**
-- Tablas: `snake_case` plural (`series`, `partidos`, `jornadas`, `parejas`, `bares`)
+- Tablas: `snake_case` plural (`series`, `partidos`, `jornadas`, `parejas`)
 - Columnas: `snake_case` singular descriptivo (`jornada_id`, `tantos_p1`, `activo`)
-- Foreign keys: `{tabla_singular}_id` (`serie_id`, `bar_id`, `pareja_1_id`)
+- Foreign keys: `{tabla_singular}_id` (`serie_id`, `jornada_id`, `pareja_id`)
 - Índices: `idx_{tabla}_{columna}` (`idx_partidos_jornada_id`)
 
 ```sql
@@ -436,7 +436,7 @@ retruco/
 │   │       ├── DashboardPage.tsx       ← /admin                      F2
 │   │       ├── SeriesPage.tsx          ← /admin/series               F2
 │   │       ├── ParejasPage.tsx         ← /admin/parejas              F2
-│   │       ├── BaresPage.tsx           ← /admin/bares                F2
+│   │       ├── ~~BaresPage.tsx~~       ← ~~/admin/bares~~            ~~F2~~ [DEPRECADO]
 │   │       ├── JornadasPage.tsx        ← /admin/jornadas             F2
 │   │       ├── NuevoPartidoPage.tsx    ← /admin/partidos/nuevo       F3
 │   │       └── EditarPartidoPage.tsx   ← /admin/partidos/:id/editar  F3

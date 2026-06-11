@@ -31,11 +31,16 @@ export function TopAppBar() {
   }
 
   function handleAccountClick() {
-    if (isAdminArea && session) {
+    if (session) {
       setMenuOpen((v) => !v)
     } else {
       navigate('/admin/login')
     }
+  }
+
+  function goToAdmin() {
+    setMenuOpen(false)
+    navigate('/admin')
   }
 
   return (
@@ -55,22 +60,28 @@ export function TopAppBar() {
         <button
           onClick={handleAccountClick}
           className="w-10 h-10 flex items-center justify-center text-primary active:scale-95 transition-transform"
-          aria-label={
-            isAdminArea && session
-              ? 'Menú de cuenta'
-              : 'Ir al panel de administración'
-          }
+          aria-label={session ? 'Menú de cuenta' : 'Ir al panel de administración'}
           aria-expanded={menuOpen}
         >
           <span className="material-symbols-outlined">account_circle</span>
         </button>
 
         {menuOpen && (
-          <div className="absolute right-0 top-full mt-xs bg-surface-container-lowest border border-outline-variant rounded-lg shadow-lg min-w-[160px] py-xs z-50">
+          <div className="absolute right-0 top-full mt-xs bg-surface-container-lowest border border-outline-variant rounded-lg shadow-lg min-w-[180px] py-xs z-50">
+            {!isAdminArea && (
+              <button
+                onClick={goToAdmin}
+                className="w-full text-left px-md py-sm text-body-md text-on-surface hover:bg-surface-container-low active:scale-95 transition-all"
+              >
+                <span className="material-symbols-outlined text-[18px] align-text-bottom mr-xs">admin_panel_settings</span>
+                Panel de administración
+              </button>
+            )}
             <button
               onClick={handleSignOut}
               className="w-full text-left px-md py-sm text-body-md text-on-surface hover:bg-surface-container-low active:scale-95 transition-all"
             >
+              <span className="material-symbols-outlined text-[18px] align-text-bottom mr-xs">logout</span>
               Cerrar sesión
             </button>
           </div>

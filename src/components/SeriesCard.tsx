@@ -54,14 +54,6 @@ export function SeriesCard({ serie }: SeriesCardProps) {
               {serie.dia_juego}
             </p>
           )}
-          {serie.bares?.nombre && (
-            <p className="text-body-md text-on-surface-variant">
-              <span className="material-symbols-outlined text-[16px] align-text-bottom mr-[2px]">
-                location_on
-              </span>
-              {serie.bares.nombre}
-            </p>
-          )}
           <p className="text-label-sm text-on-surface-variant">
             {parejasCount} {parejasCount === 1 ? 'pareja' : 'parejas'} inscriptas
           </p>

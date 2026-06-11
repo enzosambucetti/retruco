@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useNavigate } from 'react-router-dom'
 import {
   getParejas, getSeriesAdmin, createPareja, updatePareja,
   createInscripcion, deactivateInscripcion,
@@ -16,6 +17,7 @@ const EMPTY_FORM: ParejaForm = { jugador1_nombre: '', jugador1_apellido: '', jug
 
 export function ParejasPage() {
   const qc = useQueryClient()
+  const navigate = useNavigate()
   const { data: parejas = [], isLoading } = useQuery({ queryKey: ['parejas'], queryFn: getParejas })
   const { data: series = [] } = useQuery({ queryKey: ['series-admin'], queryFn: getSeriesAdmin })
 
@@ -81,7 +83,12 @@ export function ParejasPage() {
   return (
     <div className="max-w-md mx-auto px-md py-lg">
       <div className="flex items-center justify-between mb-lg">
-        <h1 className="font-condensed text-headline-lg-mobile text-on-surface">Parejas</h1>
+        <div className="flex items-center gap-sm">
+          <button onClick={() => navigate('/admin')} className="text-primary active:scale-95 transition-transform" aria-label="Volver">
+            <span className="material-symbols-outlined">arrow_back</span>
+          </button>
+          <h1 className="font-condensed text-headline-lg-mobile text-on-surface">Parejas</h1>
+        </div>
         {!formOpen && (
           <button onClick={openCreate} className="flex items-center gap-xs text-primary text-label-sm font-semibold active:scale-95 transition-transform">
             <span className="material-symbols-outlined text-[20px]">add</span>

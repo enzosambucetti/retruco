@@ -30,17 +30,17 @@ export function ConfirmSheet({
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end">
+    <div className="fixed inset-0 z-[60] flex items-end">
       <div
         className="absolute inset-0 bg-black/40"
         onClick={onCancel}
         aria-hidden="true"
       />
-      <div className="relative w-full bg-surface-container-lowest rounded-t-2xl p-lg shadow-xl max-w-lg mx-auto animate-[slideUp_200ms_ease-out]">
+      <div className="relative w-full bg-surface-container-lowest rounded-t-2xl px-lg pt-lg pb-[max(2rem,env(safe-area-inset-bottom))] shadow-xl max-w-lg mx-auto animate-[slideUp_200ms_ease-out]">
         <h2 className="font-condensed text-headline-md text-on-surface mb-xs">
           {title}
         </h2>
-        <p className="text-body-md text-on-surface-variant mb-lg">{description}</p>
+        <p className="text-body-md text-on-surface-variant mb-lg whitespace-pre-line">{description}</p>
         <div className="flex gap-sm">
           <button
             ref={cancelRef}

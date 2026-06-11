@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom'
 const NAV_ITEMS = [
   { to: '/', icon: 'home', label: 'Inicio' },
   { to: '/global', icon: 'leaderboard', label: 'Tabla Global' },
-  { to: '/admin', icon: 'admin_panel_settings', label: 'Admin' },
 ] as const
 
 export function BottomNav() {

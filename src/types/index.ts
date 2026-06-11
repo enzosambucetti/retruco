@@ -52,12 +52,7 @@ export interface Partido {
   created_at: string
 }
 
-export interface SerieConBar extends Serie {
-  bares: Bar | null
-}
-
 export interface SerieConDetalles extends Serie {
-  bares: Bar | null
   inscripciones: { id: string; activa: boolean }[]
 }
 

@@ -4,9 +4,9 @@ interface MatchResultRowProps {
   partido: PartidoConNombres
 }
 
-function nombrePareja(p: { jugador1_nombre: string; jugador1_apellido: string; jugador2_nombre: string; jugador2_apellido: string } | null | undefined): string {
+function nombrePareja(p: { jugador1_apellido: string; jugador2_apellido: string } | null | undefined): string {
   if (!p) return '—'
-  return `${p.jugador1_nombre} ${p.jugador1_apellido} / ${p.jugador2_nombre} ${p.jugador2_apellido}`
+  return `${p.jugador1_apellido} / ${p.jugador2_apellido}`
 }
 
 export function MatchResultRow({ partido }: MatchResultRowProps) {

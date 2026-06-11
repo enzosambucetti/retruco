@@ -55,7 +55,6 @@ Los tokens visuales referenciados como `{path.token}` corresponden a `DESIGN.md`
 /admin (Panel Admin)
   ├── /admin/series                   ← Gestión de series
   ├── /admin/parejas                  ← Gestión de parejas
-  ├── /admin/bares                    ← Gestión de bares
   ├── /admin/jornadas                 ← Gestión de jornadas
   └── /admin/partidos/nuevo           ← Carga de resultado
         └── /admin/partidos/:id/editar
@@ -79,7 +78,7 @@ Toda necesidad del PRD tiene superficie:
 - Ver jornadas y resultados → `/series/:id` (tab Jornadas) + `/series/:id/jornadas/:id`
 - Ver tabla global → `/global`
 - Cargar resultados → `/admin/partidos/nuevo`
-- Gestionar entidades → `/admin/series`, `/admin/parejas`, `/admin/bares`, `/admin/jornadas`
+- Gestionar entidades → `/admin/series`, `/admin/parejas`, `/admin/jornadas`
 
 ---
 
@@ -257,7 +256,7 @@ Si el token de admin expira mid-session, el próximo request muestra el toast "S
 
 ## Admin CRUD Patterns
 
-Patrones aplicables a todas las entidades gestionadas: Series, Bares, Parejas, Jornadas, Partidos.
+Patrones aplicables a todas las entidades gestionadas: Series, Parejas, Jornadas, Partidos.
 
 ### Lista de entidades
 

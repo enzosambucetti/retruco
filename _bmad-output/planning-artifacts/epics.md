@@ -28,10 +28,6 @@ FR-010: El sistema debe permitir crear una serie con nombre, día de juego y bar
 FR-011: El nombre de una serie debe ser editable en cualquier momento.
 FR-012: El sistema debe permitir desactivar una serie; las series desactivadas no aparecen en las vistas públicas pero conservan su historial completo.
 FR-013: El panel de administración debe listar todas las series activas e inactivas.
-FR-020: El sistema debe permitir crear un bar con al menos su nombre.
-FR-021: El sistema debe permitir editar el nombre de un bar.
-FR-022: El sistema debe permitir desactivar un bar.
-FR-023: Un bar puede estar asociado a múltiples series.
 FR-030: El sistema debe permitir crear una pareja identificada por nombre y apellido de cada uno de sus dos integrantes.
 FR-031: El sistema debe permitir inscribir una pareja en una o más series.
 FR-032: Una pareja inscripta en más de una serie acumula puntos de forma independiente en la tabla de cada serie.
@@ -120,10 +116,6 @@ FR-010: Epic 3 — Crear serie
 FR-011: Epic 3 — Editar nombre de serie
 FR-012: Epic 3 — Desactivar serie con ConfirmSheet
 FR-013: Epic 3 — Listar series activas e inactivas en admin
-FR-020: Epic 3 — Crear bar
-FR-021: Epic 3 — Editar nombre de bar
-FR-022: Epic 3 — Desactivar bar
-FR-023: Epic 1 — Relación bar-serie en schema SQL (una a muchas)
 FR-030: Epic 3 — Crear pareja con nombre y apellido de cada integrante
 FR-031: Epic 3 — Inscribir pareja en una o más series
 FR-032: Epic 1 — Schema: tabla inscripciones (pareja-serie independiente)
@@ -171,8 +163,8 @@ Silvana puede abrir Retruco, ver las series activas, consultar la tabla de posic
 **NFRs abordados:** NFR-001 (mobile-first 375px), NFR-002 (< 3s, 30 parejas), NFR-006 (~200 concurrent), NFR-007 (UI Truco uruguayo)
 
 ### Epic 3: Panel de administración — gestión de entidades
-Marcelo puede iniciar sesión, y desde el panel admin gestionar la estructura completa del torneo: crear y editar series, bares, parejas y jornadas; desactivar entidades con confirmación explícita.
-**FRs cubiertos:** FR-001, FR-002, FR-003, FR-010, FR-011, FR-012, FR-013, FR-020, FR-021, FR-022, FR-030, FR-031, FR-033, FR-034, FR-040, FR-041, FR-042, FR-043
+Marcelo puede iniciar sesión, y desde el panel admin gestionar la estructura completa del torneo: crear y editar series, parejas y jornadas; desactivar entidades con confirmación explícita.
+**FRs cubiertos:** FR-001, FR-002, FR-003, FR-010, FR-011, FR-012, FR-013, FR-030, FR-031, FR-033, FR-034, FR-040, FR-041, FR-042, FR-043
 **UX-DRs cubiertos:** UX-DR11, UX-DR12, UX-DR13, UX-DR18
 **NFRs abordados:** NFR-008 (admin intuitivo sin documentación)
 
@@ -440,22 +432,9 @@ So that I can navigate efficiently and close my session when done.
 **And** si el token expira mid-session, el próximo request fallido muestra toast "Sesión vencida. Ingresá de nuevo." y redirige a `/admin/login`
 **And** sin sesión activa, cualquier ruta `/admin/*` redirige a `/admin/login` via `ProtectedRoute`
 
-### Story 3.3: Gestión de bares
+### Story 3.3: ~~Gestión de bares~~ [DEPRECADO]
 
-As an admin,
-I want to create, edit, and deactivate bars,
-So that I can maintain the list of venues where series are played.
-
-**Acceptance Criteria:**
-
-**Given** la ruta `/admin/bares`
-**When** se carga la sección
-**Then** se lista cada bar con: nombre + acciones inline (ícono lápiz editar, ícono archivo desactivar); bares inactivos al final con opacidad reducida y chip "Inactivo"
-**And** botón "Nuevo Bar" abre formulario con campo nombre (requerido); al guardar exitoso regresa a la lista con el nuevo bar visible
-**And** ícono lápiz navega al mismo formulario pre-completado; al guardar regresa a la lista actualizada
-**And** ícono desactivar abre `ConfirmSheet`: título "Desactivar bar", descripción "El bar dejará de estar disponible para nuevas series.", botones "Cancelar" (foco por defecto) y "Desactivar" (`error` bg); al confirmar `activo=false`
-**And** errores de campo se muestran bajo el input con `error` text + borde `error`; CTA siempre habilitado
-**And** `useBareMutation` usa `useMutation` con `onSuccess: () => queryClient.invalidateQueries(['bares'])`
+> **Nota:** La entidad "bar" fue eliminada del MVP. El nombre del lugar de juego se incluye directamente en el nombre de la serie (ej: "Serie Los Ángeles — Bar La Esquina").
 
 ### Story 3.4: Gestión de series
 
@@ -467,8 +446,8 @@ So that I can manage the tournament's active series and their venues.
 
 **Given** la ruta `/admin/series`
 **When** se carga la sección
-**Then** se lista cada serie con: nombre, día de juego, bar asociado + acciones inline; series inactivas al final con chip "Inactivo"
-**And** formulario "Nueva Serie" incluye: nombre (requerido), campo día de juego (texto), selector bar (lista de bares activos)
+**Then** se lista cada serie con: nombre, día de juego + acciones inline; series inactivas al final con chip "Inactivo"
+**And** formulario "Nueva Serie" incluye: nombre (requerido), campo día de juego (texto)
 **And** al guardar nueva serie o editar, regresa a la lista con los datos actualizados
 **And** desactivar serie abre `ConfirmSheet`: "¿Desactivar esta serie? Los datos se conservan." — al confirmar `activo=false` y la serie desaparece de vistas públicas
 **And** `useSerieMutation` invalida queries `['series']` en `onSuccess`

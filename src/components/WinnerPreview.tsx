@@ -20,9 +20,9 @@ export function WinnerPreview({ pareja1, pareja2, tantos1, tantos2 }: WinnerPrev
         </>
       ) : (
         <>
-          <p className="text-label-sm text-on-surface-variant uppercase tracking-wide mb-[2px]">Empate</p>
-          <p className="text-body-md text-on-surface font-semibold">
-            {tantos1} — {tantos2}
+          <p className="text-label-sm text-on-surface-variant uppercase tracking-wide mb-[2px]">Resultado</p>
+          <p className="text-body-md text-on-surface-variant font-semibold">
+            Ingresá los tantos
           </p>
         </>
       )}

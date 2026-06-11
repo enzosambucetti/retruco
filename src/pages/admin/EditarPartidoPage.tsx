@@ -11,9 +11,9 @@ import { ScoreStepper } from '../../components/ScoreStepper'
 import { WinnerPreview } from '../../components/WinnerPreview'
 import { ConfirmSheet } from '../../components/ConfirmSheet'
 
-function nombrePareja(p: { jugador1_nombre: string; jugador1_apellido: string; jugador2_nombre: string; jugador2_apellido: string } | null | undefined) {
+function nombrePareja(p: { jugador1_apellido: string; jugador2_apellido: string } | null | undefined) {
   if (!p) return '—'
-  return `${p.jugador1_nombre} ${p.jugador1_apellido} / ${p.jugador2_nombre} ${p.jugador2_apellido}`
+  return `${p.jugador1_apellido} / ${p.jugador2_apellido}`
 }
 
 export function EditarPartidoPage() {
@@ -91,6 +91,7 @@ export function EditarPartidoPage() {
     if (!jornadaId) e.jornada = 'Seleccioná una jornada'
     if (!insc1Id) e.pareja1 = 'Seleccioná la pareja 1'
     if (!insc2Id) e.pareja2 = 'Seleccioná la pareja 2'
+    if (tantos1 > 40 || tantos2 > 40) e.tantos = 'Los tantos no pueden superar 40'
     if (Object.keys(e).length) { setErrors(e); return }
     setErrors({})
     setConfirmOpen(true)
@@ -168,6 +169,7 @@ export function EditarPartidoPage() {
 
         <WinnerPreview pareja1={nombrePareja(pareja1)} pareja2={nombrePareja(pareja2)} tantos1={tantos1} tantos2={tantos2} />
 
+        {errors.tantos && <p className="text-label-sm text-error text-center">{errors.tantos}</p>}
         <button
           type="button"
           onClick={handleGuardar}
@@ -181,7 +183,7 @@ export function EditarPartidoPage() {
       <ConfirmSheet
         open={confirmOpen}
         title="Confirmar edición"
-        description={`${nombrePareja(pareja1)} ${tantos1} — ${tantos2} ${nombrePareja(pareja2)}\n\nGanador: ${tantos1 !== tantos2 ? (tantos1 > tantos2 ? nombrePareja(pareja1) : nombrePareja(pareja2)) : 'Empate'}`}
+        description={`${nombrePareja(pareja1)} ${tantos1} — ${tantos2} ${nombrePareja(pareja2)}${tantos1 !== tantos2 ? `\n\nGanador: ${tantos1 > tantos2 ? nombrePareja(pareja1) : nombrePareja(pareja2)}` : ''}`}
         confirmLabel="Guardar"
         onConfirm={() => { setConfirmOpen(false); saveMutation.mutate() }}
         onCancel={() => setConfirmOpen(false)}

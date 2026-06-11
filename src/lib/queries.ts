@@ -1,8 +1,7 @@
 import { supabase } from './supabase'
 import type {
+  Serie,
   SerieConDetalles,
-  SerieConBar,
-  Bar,
   StandingRow,
   GlobalStandingRow,
   JornadaConCount,
@@ -16,21 +15,21 @@ export { supabase }
 export async function getSeries(): Promise<SerieConDetalles[]> {
   const { data, error } = await supabase
     .from('series')
-    .select('*, bares(id, nombre), inscripciones(id, activa)')
+    .select('*, inscripciones(id, activa)')
     .eq('activo', true)
     .order('nombre')
   if (error) throw error
   return data as unknown as SerieConDetalles[]
 }
 
-export async function getSerie(id: string): Promise<SerieConBar> {
+export async function getSerie(id: string): Promise<Serie> {
   const { data, error } = await supabase
     .from('series')
-    .select('*, bares(id, nombre)')
+    .select('*')
     .eq('id', id)
     .single()
   if (error) throw error
-  return data as unknown as SerieConBar
+  return data as unknown as Serie
 }
 
 export async function getStandings(serieId: string): Promise<StandingRow[]> {
@@ -85,42 +84,14 @@ export async function getPartidosJornada(
 
 // ─── Admin queries ────────────────────────────────────────────────────────────
 
-export async function getBares() {
+export async function getSeriesAdmin() {
   const { data, error } = await supabase
-    .from('bares')
+    .from('series')
     .select('*')
     .order('activo', { ascending: false })
     .order('nombre')
   if (error) throw error
-  return data as Bar[]
-}
-
-export async function createBar(nombre: string) {
-  const { error } = await supabase.from('bares').insert({ nombre })
-  if (error) throw error
-}
-
-export async function updateBar(id: string, nombre: string) {
-  const { error } = await supabase.from('bares').update({ nombre }).eq('id', id)
-  if (error) throw error
-}
-
-export async function deactivateBar(id: string) {
-  const { error } = await supabase
-    .from('bares')
-    .update({ activo: false })
-    .eq('id', id)
-  if (error) throw error
-}
-
-export async function getSeriesAdmin() {
-  const { data, error } = await supabase
-    .from('series')
-    .select('*, bares(id, nombre)')
-    .order('activo', { ascending: false })
-    .order('nombre')
-  if (error) throw error
-  return data as unknown as SerieConBar[]
+  return data as unknown as Serie[]
 }
 
 export async function createSerie(payload: {

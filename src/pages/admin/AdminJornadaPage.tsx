@@ -5,9 +5,9 @@ import { getJornadasAdmin, getPartidosAdminByJornada, deactivatePartido } from '
 import { ConfirmSheet } from '../../components/ConfirmSheet'
 import { InactiveChip } from '../../components/InactiveChip'
 
-function nombrePareja(p: { jugador1_nombre: string; jugador1_apellido: string; jugador2_nombre: string; jugador2_apellido: string } | null | undefined) {
+function nombrePareja(p: { jugador1_apellido: string; jugador2_apellido: string } | null | undefined) {
   if (!p) return '—'
-  return `${p.jugador1_nombre} ${p.jugador1_apellido} / ${p.jugador2_nombre} ${p.jugador2_apellido}`
+  return `${p.jugador1_apellido} / ${p.jugador2_apellido}`
 }
 
 function formatFecha(s: string) {

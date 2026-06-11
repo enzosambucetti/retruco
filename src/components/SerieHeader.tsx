@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom'
-import type { SerieConBar } from '../types'
+import type { Serie } from '../types'
 
 interface SerieHeaderProps {
-  serie: SerieConBar
+  serie: Serie
   showBack?: boolean
 }
 
@@ -25,12 +25,6 @@ export function SerieHeader({ serie, showBack = false }: SerieHeaderProps) {
         {serie.nombre}
       </h1>
       <div className="flex flex-wrap gap-x-md gap-y-xs mt-xs">
-        {serie.bares?.nombre && (
-          <span className="text-label-sm text-on-surface-variant flex items-center gap-[2px]">
-            <span className="material-symbols-outlined text-[14px]">location_on</span>
-            {serie.bares.nombre}
-          </span>
-        )}
         {serie.dia_juego && (
           <span className="text-label-sm text-on-surface-variant flex items-center gap-[2px]">
             <span className="material-symbols-outlined text-[14px]">calendar_today</span>

@@ -1,5 +1,12 @@
 import type { StandingRow } from '../types'
 
+function soloApellidos(nombre: string): string {
+  return nombre
+    .split(' / ')
+    .map(p => { const w = p.trim().split(' '); return w[w.length - 1] })
+    .join(' / ')
+}
+
 interface StandingsTableProps {
   rows: StandingRow[]
   extraHeader?: React.ReactNode
@@ -26,11 +33,11 @@ export function StandingsTable({ rows, extraHeader, extraCell }: StandingsTableP
           </tr>
         </thead>
         <tbody>
-          {rows.map((row) => {
+          {rows.map((row, index) => {
             const isFirst = row.posicion === 1
             return (
               <tr
-                key={row.inscripcion_id}
+                key={`${row.inscripcion_id ?? row.pareja_id ?? 'row'}-${index}`}
                 className={`border-b border-outline-variant ${isFirst ? 'bg-surface-container-low' : ''}`}
                 style={{ minHeight: 44 }}
               >
@@ -38,7 +45,7 @@ export function StandingsTable({ rows, extraHeader, extraCell }: StandingsTableP
                   {row.posicion}
                 </td>
                 <td className="px-2 py-2 text-body-md text-on-surface leading-tight">
-                  {row.nombre_pareja}
+                  {soloApellidos(row.nombre_pareja)}
                 </td>
                 {extraCell?.(row)}
                 <td className="px-1 py-2 font-condensed text-ranking-number text-on-surface text-right w-7 tabular-nums">
